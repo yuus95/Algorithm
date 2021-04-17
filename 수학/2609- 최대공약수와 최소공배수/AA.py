@@ -11,9 +11,4 @@ a,b = map(int,input().split())
 g = gcd(a,b)
 
 print(g) # 최대 공약수
-print(a*b//g) # 최대 공배수
-
-
-
-
-
+print(a*b//g) # 최소 공배수
