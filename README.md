@@ -38,3 +38,47 @@ ex) a=[1,2,3,4]
 
 print(''.join(map(str,a))) -->1234
 
+
+=========== reduce함수 ==============
+
+from functools import reduce
+
+reduce(함수, 순서형 자료)
+
+reduce(lambda x,y : x+y,[0,1,2,3,4,])
+==> 10
+
+reduce(lambda x,y : y+x,'abced')
+==> 'edcba'
+
+reduce(labmda x,y x+y, 이차원배열)
+==> 이차원배열 원소를 일차원 배열로 변경시킨다.
+[ [0, 0, 0, 0] ,[0,0,0,0] ] ==> [0,0,0,0,0,0,0,0,]
+
+
+=========== Counter함수 ==============
+
+//카운터함수는 같은 동일한 자료가 몇 개인지 확인하는데 사용한다.
+
+from collections import Counter
+
+ans =[1, 1, 2, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+
+ans = sorted(list(Counter(ans).values()))
+==> 7,8,9  
+
+
+=========== max함수 ==============
+
+dist = [[8, 7, 6, 5, 4, 3], [7, 6, 5, 4, 3, 2], [6, 5, 4, 3, 2, 1], [5, 4, 3, 2, 1, 0]]
+
+ans = [max(row) for row in dist]
+print(ans) ==> [8,7,6,5]  // 각 행마다 제일 높은 수가나옴
+
+ans = max([max(row) for row in dist]) 
+print(ans) ==> 8  // 2중배열에서 가장 높은 수가 나옴 
+
+
+
+
+
