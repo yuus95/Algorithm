@@ -39,7 +39,7 @@ for _ in range(k):
             temp=a[i][7]
             for j in range(7,0,-1):
                 a[i][j] = a[i][j-1]
-                a[i][0] = temp
+            a[i][0] = temp
         # -1 이면 반시계 방향으로 회전
         elif d[i] ==-1:
             temp = a[i][0]
@@ -52,5 +52,4 @@ ans = 0
 for i in range(n):
     if a[i][0] == '1':
         ans |= (1<<i)
-        print(ans)
 print(ans)
