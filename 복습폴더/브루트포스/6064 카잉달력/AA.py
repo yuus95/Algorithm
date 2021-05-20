@@ -2,17 +2,18 @@ import sys
 sys.stdin=open("00.txt","r")
 
 
-t = int(input())
-for _ in range(t):
-    m,n,x,y = map(int,input().split())
-    x -= 1 # 나머지를 이용해 정답을 구하므로  x = x- 1 을 해야 나머지
-    y -= 1
-    k = x
+n = int(input())
 
-    while k < n * m :
-        if k % n == y :
-            print(k+1)
+for _ in range(n):
+    M,N,x,y= map(int,input().split())
+    year = 1
+
+    while year<N*M:
+        if year % M == x and year % N == y:
+            print(year)
             break
-        k += m
-    else :
+        year+=1
+    else:
         print(-1)
+        break
+
