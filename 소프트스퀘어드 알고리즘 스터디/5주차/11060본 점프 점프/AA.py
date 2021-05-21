@@ -7,16 +7,18 @@ a = list(map(int,input().split()))
 
 d = [2147000] * n
 d[0] = 0
-for i in range(n):
-    for j in range(a[i]):
-        if  a[i] +j < n :
-            if d[a[i]+j]  > d[i] +1 :
-                d[a[i]+j] = d[i] + 1
+for i in range(1,n):
+    for j in range(i):
+        for k in range(1,a[j]+1):
+            if i == j + k:
+                if d[i] > d[j] + 1:
+                    d[i] = d[j] +1
 
 
-
-print(d)
-
+if d[-1] == 2147000:
+    print(-1)
+else:
+    print(d[-1])
 
 
 
