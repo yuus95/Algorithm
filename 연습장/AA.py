@@ -1,22 +1,13 @@
-import sys
-from itertools import permutations
-sys.stdin=open("00.txt","r")
 
-n , m = map(int,input().split())
-
-
-d =[0]* m
-check= [0] *(n+1)
+def test(n):
+    if ( n== 0 ):
+        return
+    test(n//2)
 
 
-def dfs(num):
-    global check
 
-    check[num] = True
-    d.append(num)
-    for x in a[num] :
-        if check[x] == False:
-            dfs(num)
+a = 2
 
+b=test(a)
 
-dfs(k)
+print(b)
