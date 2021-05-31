@@ -1,6 +1,3 @@
-import sys
-sys.stdin=open("00.txt","r")
-
 
 def next_permutation(a):
     i = len(a)-1
@@ -11,14 +8,15 @@ def next_permutation(a):
         return False
     j = len(a)-1
 
-    while a[j] <= a[i-1]: #오른쪽에 있으면서 a[i-1]보다 큰 수 나올 경우 끝
+    while a[j] <= a[i-1]: #a[j] 보다는 크지만 제일 작은수 찾기
         j -= 1
 
     a[i-1],a[j] = a[j],a[i-1]
+
     j = len(a) -1
 
     while i < j :
-        a[i],a[j] = a[j],a[i] # a[i]부터 순열 뒤집기
+        a[i],a[j] = a[j],a[i]
         i += 1
         j -= 1
 

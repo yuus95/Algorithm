@@ -26,12 +26,12 @@ def calc(row):
             check_dig2[row+n -col - 1 ] = True
             check_col[col] = True
 
-            a[row][col] = True
+            # a[row][col] = True
             ans += calc(row+1)
             check_dig[row+col] = False
             check_dig2[row-col+n -1 ] = False
             check_col[col] = False
-            a[row][col] = False
+            # a[row][col] = False
 
     return ans
 

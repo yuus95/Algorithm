@@ -1,13 +1,19 @@
+import sys
 
-def test(n):
-    if ( n== 0 ):
-        return
-    test(n//2)
+sys.stdin=open("00.txt","r")
 
 
+n= int(input())
+a = [''] * n
 
-a = 2
+letters = set()
+for i in range(n):
+    a[i]=input()
+    letters |= set(a[i])
 
-b=test(a)
+print(a)
+print(letters)
 
-print(b)
+letters = list(letters)
+
+print(letters)

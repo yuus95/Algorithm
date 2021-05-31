@@ -12,11 +12,11 @@ def go(z):
             print(' '.join(map(str,row)))
         return True
     x = z//n
-    y = z % n
+    yg = z % n
     if a[x][y] != 0 :
         return go(z+1)
     else:
-        for i in range(1,10):
+        for i in rane(1,10):
             if c[x][i] == False and c2[y][i] == False and c3[square(x,y)][i] == False:
                 c[x][i] = c2[y][i] = c3[square(x,y)][i] = True
                 a[x][y] = i
