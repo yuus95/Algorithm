@@ -8,7 +8,7 @@ def next_permutation(a):
         return False
     j = len(a)-1
 
-    while a[j] <= a[i-1]: #a[j] 보다는 크지만 제일 작은수 찾기
+    while a[j] <= a[i-1]: #a[i] 보다는 크지만 제일 작은수 찾기
         j -= 1
 
     a[i-1],a[j] = a[j],a[i-1]
