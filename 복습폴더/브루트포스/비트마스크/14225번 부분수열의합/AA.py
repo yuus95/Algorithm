@@ -5,26 +5,24 @@ sys.stdin=open("00.txt","r")
 
 n = int(input())
 
-a = list(map(int,input().split()))
+d = list(map(int,input().split()))
 
-check =[False] * (n * 1000000 + 10)
 
+check = [True] * (100000 * 20 + 10)
 
 for i in range(1<<n):
     s = 0
-
     for j in range(n):
-       if i & (1<<j):
-           s += a[j]
+        if i &(1<<j):
+            s +=d[j]
 
-    check[s] = True
+    check[s] = False
+i = 1
 
-i = 0
 while True:
-    if check[i] == False:
+    if check[i] == True:
         print(i)
         break
     i+=1
-
 
 

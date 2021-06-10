@@ -6,7 +6,6 @@ def calc(a,index,cur,plus,minus,mul,div):
         return(cur,cur)
     res= []
 
-
     if plus > 0:
         res.append(calc(a,index+1,cur+a[index],plus-1, minus,mul,div))
 

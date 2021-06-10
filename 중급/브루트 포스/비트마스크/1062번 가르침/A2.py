@@ -1,37 +1,44 @@
 import sys
 sys.stdin=open("00.txt","r")
 
-def count(mask,words):
-    cnt = 0
-    for word in words:
-        if (word & ((1<<26)-1-mask)) == 0 :
-            cnt += 1
-    return cnt
 
-def go(index,k , mask , words):
-    if k < 0 :
-        return 0
+n,k = map(int,input().split())
+
+def count(a):
+    ok = True
+
+
+def go(index,k,a):
+
     if index == 26:
-        return count(mask,words)
+        if k == 6:
+            count(a)
+    if k >= 6:
+        return
+    if index in a:
+        go(index+1,k,a)
+    else:
+        go(index+1,k+1,a+[index])
+        go(index+1,k,a)
+    return
 
-    ans = 0
-    t1 = go(index+1,k-1,mask | (1<<index),words)
-    if ans < t1:
-        ans = t1
+# words=[]
+# # for _ in range(n):
+# #     words.append(input())
 
-    if index not in [ord('a')-ord('a'),ord('n')-ord('a'),ord('t')-ord('a'),ord('i')-ord('a'),ord('c')-ord('a')]:
-        t2 = go(index+1,k,mask,words)
-        if ans < t2:
-            ans = t2
-    return ans
+words=  [input() for _ in range(n)]
+box = ['a','n','t','c','i']
+word_box = []
+
+for i in range(5):
+    word_box.append(ord(box[i])-ord('a'))
 
 
+for word in words:
+    a = set(word)
+    temp = []
+    for x in a :
+        temp.append(ord(x)-ord('a'))
+    word_box.append(temp)
 
-n,m = map(int,input().split())
-words=[0] * n
-
-for i in range(n):
-    s = input()
-    for x in s:
-        words[i] |= (1<<(ord(x)-ord('a')))
-print(go(0,m,0,words))
+go(0,0,box)
