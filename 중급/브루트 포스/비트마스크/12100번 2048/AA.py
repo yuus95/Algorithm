@@ -106,7 +106,7 @@ def check(a,dirs):
     return ans
 
 for k in range(1<<(LIMIT*2)): #모든 방법 만들기
-    dirs = gen(k) # 5가지의 방향을 배열로 넣어놓기
+    dirs = gen(k) # 5가지의 방향조작을 배열로 넣어놓기
     cur = check(a,dirs) #만들 수 이쓴ㄴ 최댓값 만들기
     if ans < cur :
         ans = cur
