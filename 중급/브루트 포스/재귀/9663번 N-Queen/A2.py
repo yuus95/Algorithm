@@ -37,8 +37,8 @@ def calc(row):
 
 n = int(input())
 a = [[False] * n for _ in range(n)]
-check_col  = [False] * n
-check_dig = [False] * (2*n-1)
-check_dig2=[False] * (2*n-1)
+check_col  = [False] * n # 열 검사
+check_dig = [False] * (2*n-1) # 대각선 검사
+check_dig2=[False] * (2*n-1) # 대각선2 검사
 
 print(calc(0))

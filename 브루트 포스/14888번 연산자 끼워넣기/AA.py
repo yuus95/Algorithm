@@ -17,7 +17,7 @@ def go(d, cur, idx, plus, minus, mul, div):
         if mul > 0:
             go(d, cur * d[idx], idx + 1, plus, minus, mul - 1, div)
         if div:
-            go(d,int(cur / d[idx]), idx + 1, plus, minus, mul, div - 1)
+            go(d,cur //d[idx], idx + 1, plus, minus, mul, div - 1)
 
 n = int(input())
 
