@@ -9,6 +9,8 @@ a = list(map(int,a))
 n = len(a)
 b = int(b)
 
+
+# a의 i번째 수 체크하기위함
 check = [False] * n
 
 def go(index,num):
