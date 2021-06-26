@@ -9,38 +9,34 @@ a.sort()
 b =int(b)
 #다음순열
 def next_permutation(x):
-    i = len(x) -1
-
-    while x[i] < x[i-1]  and i > 0:
-        i-=1
-
-    if i <= 0:
-        return False
-
-    j = len(x) - 1
-
-    while x[i-1] >= x[j] :
-        j-=1
-    x[i-1] ,x[j] = x[j],x[i-1]
+    i = len(x) - 1
+    while i > 0 and a[i-1] >= a[i]:
+         i-= 1
 
     j = len(x) -1
-    while i< j :
-        x[i] , x[j] = x[j] , x[i]
+    while a[i-1] >= a[j]:
+        j-=1
+
+    a[i-1] ,a[j] = a[j],a[i-1]
+
+    j = len(x) - 1
+    while  i< j :
+        a[i],a[j] = a[j] ,a[i]
         i +=1
-        j -= 1
+        j -=1
+
 
     return True
 
 while True:
-     temp = int("".join(map(str,a)))
-     if temp > b :
-         print(-1)
-         break
+    c=int(''.join(a))
+    if a[0] != '0' and c <b :
+        if ans == -1 or ans <c :
+            ans =c
 
-     if next_permutation(a):
-         ans = int("".join(map(str,a)))
-         if ans > b :
-             print(temp)
-             break
-     else :
-         break
+    if not next_permutation(a):
+        break
+
+
+print(ans)
+

@@ -26,12 +26,15 @@ def go(x,p):
         return x
     check[x]=1
 
+# 1234
     for y in a[x]:
         if y == p :
             continue
         res = go(y,x)
+        # 싸이클에 포함되어 있지않으면 다 마이너스2 리턴
         if res == -2:
             return -2
+        #싸이클 시작점 까지만 res 가 0이상임 
         if res >= 0 :
             check[x] = 2
             if x == res:
@@ -63,9 +66,4 @@ while q:
             dist[y] = dist[x]+1
 
 print(*dist,sep=' ')
-
-
-test= [1,2,3,4]
-
-print(*test,end=' ')
 
