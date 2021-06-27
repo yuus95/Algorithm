@@ -17,6 +17,7 @@ def go(index,num):
     if index == n :
         return num
     ans = - 1
+    print('1')
     for i in range(n):
         if check[i]:
             continue
