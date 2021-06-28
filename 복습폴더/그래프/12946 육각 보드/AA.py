@@ -16,7 +16,7 @@ dy= [0,1,-1,1,-1,0]
 
 ans = 0
 
-# c 컬러?
+# c 컬러?  --
 def dfs(x,y,c):
     global ans
     color[x][y]= c
@@ -29,6 +29,7 @@ def dfs(x,y,c):
             if a[nx][ny] == 'X':
                 #방문 하지 않았을 경우
                 if color[nx][ny]== -1:
+                    # color[nx][ny] = 1-c
                     dfs(nx,ny,1-c)
                     ans =max(ans,2)
                 if color[nx][ny] == c:
