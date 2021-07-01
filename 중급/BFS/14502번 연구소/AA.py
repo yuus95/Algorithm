@@ -16,7 +16,7 @@ def bfs(a):
     b = [[0] * m for _ in range(n)]
     for i in range(n):
         for j in range(m):
-            b[i][j] = a
+            b[i][j] = a[i][j]
             if b[i][j] == 2:
                 d.append((i,j))
 
