@@ -12,9 +12,11 @@ m = (n-1) //2 # 연산자
 
 ans = None
 
+
+# 방법 2^m 가지 실행
 for s in range(1<<m):
     ok = True
-
+    # 중복괄호 나올경우 continue
     for i in range(m-1):
         if (s&(1<<i)) > 0 and (s &(1<<(i+1))) > 0 :
             ok = False

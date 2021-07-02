@@ -13,6 +13,7 @@ def check(a,b,x,y,dir):
     while 0<= i <n and 0 <= j < m :
         if a[i][j] == 6:
             break
+        # 벽을 만나기전까지 구역 검사
         b[i][j] = a[x][y]
         i += dx[dir]
         j += dy[dir]
@@ -40,7 +41,7 @@ def go(a,cctv,index,dirs):
                 check(a,b,x,y,dirs[i])
                 check(a,b,x,y,(dirs[i]+1) %4)
                 check(a,b,x,y,(dirs[i]+2) %4)
-                check(a,b,x,y,(dirs[i]+3)%4)
+                check(a,b,x,y,(dirs[i]+3) %4)
         cnt = 0
         for i in range(n):
             for j in range(m):
@@ -49,7 +50,7 @@ def go(a,cctv,index,dirs):
         return cnt
     ans = 100
     for i in range(4):
-        temp = go(a,cctv,index+1,dirs[i])
+        temp = go(a,cctv,index+1,dirs+[i])
         if ans > temp:
             ans = temp
     return ans
