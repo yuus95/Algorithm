@@ -21,3 +21,4 @@ for i in range(n):
         go(i,j,a[i][j],1)
 
 print(len(ans))
+
