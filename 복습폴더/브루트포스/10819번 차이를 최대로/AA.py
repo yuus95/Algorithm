@@ -11,7 +11,7 @@ def next_permutation(a):
         return False
     j = len(a)-1
     while a[i-1] >=a[j]:
-        j-=1
+        j-=1 
 
     a[i-1], a[j] = a[j],a[i-1]
 
