@@ -23,6 +23,7 @@ ans = 2147000000
 
 def dfs(x,y,z,num):
     global ans
+
     if x == n-1 and y == m-1:
         if num != 0 :
             if num < ans :
@@ -34,17 +35,17 @@ def dfs(x,y,z,num):
 
     for k in range(4):
         nx,ny = x+dx[k],y+dy[k]
-
         if 0<= nx < n and 0<= ny <m:
-            if z == 0 and a[nx][ny] == 1 and ch[nx][ny] == False:
+            if ch[nx][ny] == True:
+                continue
+            if z == 0 and a[nx][ny] == 1 :
                 ch[nx][ny]=True
                 dfs(nx,ny,1,num+1)
                 ch[nx][ny]=False
-            if ch[nx][ny] == False and a[nx][ny] == 0 :
+            if  a[nx][ny] == 0 :
                 ch[nx][ny] = True
                 dfs(nx, ny, z, num + 1)
                 ch[nx][ny] = False
-
 
 
 dfs(0,0,0,1)
@@ -52,6 +53,5 @@ if ans != 2147000000:
     print(ans)
 else:
     print(-1)
-
 
 
