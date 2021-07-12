@@ -20,12 +20,15 @@ def bfs(d, x, y, g):
 def go(a, x, y, d1, d2):
     n = len(a)
     d = [[0]*n for _ in range(n)]
+    # 경계구역 만들기
     for i in range(0, d1+1):
         d[x+i][y-i] = 5
         d[x+d2+i][y+d2-i] = 5
     for i in range(0, d2+1):
         d[x+i][y+i] = 5
         d[x+d1+i][y-d1+i] = 5
+
+
     for j in range(0, y-d1):
         d[x+d1][j] = 3
     for i in range(0, x):
@@ -52,10 +55,13 @@ def go(a, x, y, d1, d2):
 n = int(input())
 a = [list(map(int,input().split())) for _ in range(n)]
 ans = -1
+
+# d1,d2 x,y  구하기 n**4
 for x in range(n):
     for y in range(n):
         for d1 in range(1, n):
             for d2 in range(1, n):
+                 # 경계선이 그래프 밖으로 나가는지 체크
                 if 0 <= y-d1 and y+d2 < n:
                     if x+d1+d2 < n:
                         temp = go(a, x, y, d1, d2)
