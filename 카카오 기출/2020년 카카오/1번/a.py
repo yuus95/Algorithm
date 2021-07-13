@@ -1,4 +1,4 @@
-str = ["aabbaccc","ababcdcdababcdcd","abcabcdede","abcabcabcabcdededededede","xababcdcdababcdcd"]
+strs= ["aabbaccc","ababcdcdababcdcd","abcabcdede","abcabcabcabcdededededede","xababcdcdababcdcd"]
 
 
 
@@ -16,30 +16,39 @@ str = ["aabbaccc","ababcdcdababcdcd","abcabcdede","abcabcabcabcdededededede","xa
 def solution(s):
     answer = 0
     n = len(s)
+    result = []
 
-    print(s[0:2])
+    if n == 1 :
+        return 1
 
-    # 문자열 길이
+    # 검사 문자열 길이
     for i in range(1,(n//2)+1):
-        #문자열 찾기
-        # 문자마다 문자길이만큼 증가시킨 str생성
-        for j in range(n):
-            if j + i >= n :
+        temp = ""
+        count = 1
+        str_s = s[:i]
+        for j in range(i,n,i):
+            if i + j > n+1:
                 continue
-            str = s[j:j+i]
-            print(str,end=' ')
+            if str_s == s[j:j+i]:
+                count+=1
+            else :
+                if count == 1 :
+                    count= ""
+                temp += str(count)+str_s
+                str_s = s[j:j+i]
+                count = 1
+        # 마지막에 비교한 값이 count가 증가하고 끝날 경우 str_s에 들어가질 못함. ㄴ
+        if count == 1 :
+            count = ""
+        temp += str(count)+str_s
+        result.append(len(temp))
+
+    return min(result)
 
 
 
 
 
-
-    return answer
-
-
-
-
-
-for s in str:
+for s in strs:
     print(solution(s))
 

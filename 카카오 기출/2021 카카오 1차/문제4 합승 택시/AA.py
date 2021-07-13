@@ -33,6 +33,7 @@ def solution(n,s,a,b,fares):
 
 
     dp =[[]] + [dijkstra(i) for i in range(1,n+1)]
+    print(dp)
     answer = 987654321
     for i in range(1,n+1):
         answer = min(dp[i][a]+dp[i][b] + dp[i][s],answer)

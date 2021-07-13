@@ -14,6 +14,7 @@ while lt < rt:
     else :
         rt = mid
 
+#L이전 나오는숫자
 print("lower bound",ans)
 
 l = 6
@@ -29,5 +30,5 @@ while lt < rt:
         ans = lt
     else :
         rt = mid
-
-print("upper bound",ans)
+#  L이상 나오는숫자ㄴ
+print("upper bound",ans) 

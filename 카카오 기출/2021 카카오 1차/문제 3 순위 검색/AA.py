@@ -10,18 +10,21 @@ query = ["java and backend and junior and pizza 100","python and frontend and se
 def solution(info,querie):
     answer = []
     db={}
+
+    # 문자열 하나에 대한 만들수 있는  모든 조합 만들어서 DB {}에 넣기
     for i in info:
         temp=i.split()
-        conditions = temp[:-1]
-        score = int(temp[-1])
+        conditions = temp[:-1] # 조건
+        score = int(temp[-1]) # 점수
         for n in range(5): # 조건들에 대해 조합을 이용
-            combi = list(combinations(range(4),n))
-            #16번 조합 만들기
+            combi = list(combinations(range(4),n)) # 번호 조합 만들기
+           #문자열과 '-' 로 만들 수 있는 조합 만들기
             for c in combi:
                 t_c = conditions.copy()
                 for v in c:
                     t_c[v]='-'
                 changed_t_c = '/'.join(t_c)
+                print(changed_t_c)
                 if changed_t_c in db:
                     db[changed_t_c].append(score)
                 else:
