@@ -23,6 +23,7 @@ while q:
         if a[nx][ny] == 0 and d[nx][ny][z][1-night] == 0: # 벽이 아닌경우
             d[nx][ny][z][1-night] = d[x][y][z][night] + 1
             q.append((nx,ny,z,1-night)) # 1이면 나이트  0 이면 낮  처음엔 낮부터시작
+
         if night == 0 and z+1 <= l and a[nx][ny] == 1 and d[nx][ny][z+1][1-night] == 0: # 벽이고 낮인 경우
             d[nx][ny][z+1][1-night] = d[x][y][z][night] + 1
             q.append((nx,ny,z+1,1-night))

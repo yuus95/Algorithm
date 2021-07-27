@@ -55,4 +55,3 @@ for i in range(n):
                 ans += group_size[g]
             print(ans % 10, end='')
     print()
-

@@ -2,57 +2,41 @@ import sys
 from collections import deque
 sys.stdin=open("00.txt","r")
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
-n, m = map(int, input().split())
-a = [list(map(int, list(input()))) for _ in range(n)]  # 입력값
-group = [[-1] * m for _ in range(n)]  # i,j 의 그룹 번호
-check = [[False] * m for _ in range(n)] # bfs 체크
-group_size = [] # k번 그룹의 크기 
 
+a = [[0]*1000 for _ in range(1000)]
 
-def bfs(sx, sy):
-    g = len(group_size)
-    q = deque()
-    q.append((sx, sy))
-    group[sx][sy] = g
-    check[sx][sy] = True
-    cnt = 1
-    while q:
-        x, y = q.popleft()
-        for k in range(4):
-            nx, ny = x + dx[k], y + dy[k]
-            if 0 <= nx < n and 0 <= ny < m:
-                if check[nx][ny] == False and a[nx][ny] == 0:
-                    check[nx][ny] = True
-                    group[nx][ny] = g  # 그룹번호 지정
-                    q.append((nx, ny)) 
-                    cnt += 1
+# d[1000][1000][11
+d = [[[0]*11 for i in range(1000)] for j in range(1000)]
+dx = [0,0,1,-1]
+dy = [1,-1,0,0]
+n,m,l = map(int,input().split())
+a = []
 
-    group_size.append(cnt)
-
-
-# 빈 벽 그룹 지정
 for i in range(n):
-    for j in range(m):
-        if a[i][j] == 0 and check[i][j] == False: 
-            bfs(i, j)
+    a.append(list(map(int,list(input()))))
 
-# 이동할 수 있는 칸 갯수 세기
-for i in range(n):
-    for j in range(m):
-        if a[i][j] == 0:
-            print(0, end='')
-        else:
-            near = set()
-            for k in range(4):
-                nx, ny = i + dx[k], j + dy[k]
-                if 0 <= nx < n and 0 <= ny < m:
-                    if a[nx][ny] == 0:
-                        near.add(group[nx][ny])
-            ans = 1
-            for g in near:
-                ans += group_size[g]
-            print(ans % 10, end='')
-    print()
 
+q = deque()
+d[0][0][0] = 1
+q.append((0,0,0))
+while q:
+    x,y,z = q.popleft()
+    for k in range(4):
+        nx,ny = x+dx[k], y+dy[k]
+        if nx < 0 or nx >= n or ny < 0 or ny >= m:
+            continue
+        if a[nx][ny] == 0 and d[nx][ny][z] == 0:
+            d[nx][ny][z] = d[x][y][z] + 1
+            q.append((nx,ny,z))
+        if z+1 <= l and a[nx][ny] == 1 and d[nx][ny][z+1] == 0:
+            d[nx][ny][z+1] = d[x][y][z] + 1
+            q.append((nx,ny,z+1))
+ans = -1
+for i in range(l+1):
+    if d[n-1][m-1][i] == 0:
+        continue
+    if ans == -1:
+        ans = d[n-1][m-1][i]
+    elif ans > d[n-1][m-1][i]:
+        ans = d[n-1][m-1][i]
+print(ans)
