@@ -48,7 +48,7 @@ check =[[False]* m for _ in range(n)]
 group_len = []
 
 
-
+# 그룹화
 for i in range(n):
     for j in range(m):
         if a[i][j] == 0 and check[i][j] == False:
