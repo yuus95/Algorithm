@@ -1,0 +1,48 @@
+import sys
+from collections import deque
+sys.stdin=open("00.txt","r")
+
+def change(num,index,digit):
+    if index == 0 and digit == 0 :
+        return -1
+    s = list(str(num))
+
+    # 문자열에 숫자를 문자로 변환해서 넣는방법
+    s[index] = chr(digit+ord('0'))
+    return int(''.join(s))
+
+
+# 소수판별
+
+prime = [False] * 10001
+for i in range(2, 10001):
+    if prime[i] == False:
+        for j in range(i*i, 10001, i):
+            prime[j] = True
+for i in range(10001):
+    prime[i] = not prime[i]
+
+
+t = int(input())
+
+for _ in range(t):
+    n,m = map(int,input().split())
+    c = [False] * 10001
+    d = [0]* 10001
+    d[n] = 0
+    c[n] = True
+    q=deque()
+    q.append(n)
+    while q:
+        now = q.popleft()
+        for i in range(4):
+            for j in range(10):
+                nxt = change(now,i,j)
+                if nxt != -1:
+                    if prime[nxt] and c[nxt] == False:
+                        q.append(nxt)
+                        d[nxt] = d[now]+1
+                        c[nxt] = True
+
+    print(d[m])
+
