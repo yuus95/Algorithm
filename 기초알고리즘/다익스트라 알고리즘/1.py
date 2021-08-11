@@ -7,6 +7,8 @@ V,E = map(int,input().split())
 
 graph = []
 
+
+# 방향 그래프
 for _ in range(V):
     u,v,w = map(int,input().split())
     graph[u].append(v,w)
