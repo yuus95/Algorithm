@@ -1,31 +1,24 @@
 from collections import deque
 
-def solution(priorities, location):
-    q=deque()
+def solution(prices):
+    answer = []
+    q= deque()
 
-    test = 0
-
-    for i in range(len(priorities)):
-        q.append((i,priorities[i]))
+    for i in range(len(prices)):
+        q.append(prices[i])
 
     while q:
-        x,y = q.popleft()
-        ok = True
-        # for k in range(len(q)):
-        #     if y < q[k][1]:
-        #         ok = False
-        if any(y < b for a,b in q):
-                ok = False
-                q.append((x, y))
-        else:
-            test+=1
-            if x == location:
-                return test
+        x = q.popleft()
+        cnt = 0
+        for temp in q:
+            cnt +=1
+            if x > temp:
+                break
+        answer.append(cnt)
+    return answer
 
 
-priorities=[[2, 1, 3, 2],[1, 1, 9, 1, 1, 1]]
-location=[2,0]
+prices=[1, 2, 3, 2, 3]
 
 
-for i in range(2):
-    print(solution(priorities[i],location[i]))
+print(solution(prices))
