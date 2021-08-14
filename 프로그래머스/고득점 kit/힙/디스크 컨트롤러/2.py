@@ -1,18 +1,26 @@
-# 실패 내일 다시 풀기
+import heapq
+
 def solution(jobs):
-    answer = 0
-    n = len(jobs)
-    data = sorted(jobs,key=lambda x:(x[1],x[0]))
-    sum = 0
-    temp = 0
-    for i in range(len(data)):
-        sum += data[i][1]
-        temp += sum - data[i][0]
+    answer,now , i =0,0,0
+    start = -1
+    heap = []
 
-    answer = temp//n
+    while i < len(jobs):
+        for j in jobs:
+            if start < j[0] <= now:
+                heapq.heappush(heap,[j[1],j[0]])
+
+        if len(heap) > 0 :
+            current = heapq.heappop(heap)
+            start = now
+            now += current[0]
+            answer+= (now - current[1])
+            i+=1
+        else :
+            now += 1
 
 
-    return answer
+    return int(answer/len(jobs))
 
 
 
